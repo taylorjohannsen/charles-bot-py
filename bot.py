@@ -7,15 +7,15 @@ counter = 0
 @slack.RTMClient.run_on(event='message')
 def quickTest(**message):
     global counter
-    data = message['data']
+    # data = message['data']
     web = message['web_client']
 
     counter += 1
     print(counter)
-    if counter is 5:
+    if counter == 2:
         web.chat_postMessage(
-            channel='testing',
-            text='You called 5 times!'
+            channel='the_finer_things',
+            text='UwU?'
         )
         counter = 0
 
