@@ -1,5 +1,6 @@
 import os
 import slack
+from hewwwo import hewwwo
 from creds.slackToken import botToken
 
 counter = 0
@@ -7,17 +8,19 @@ counter = 0
 @slack.RTMClient.run_on(event='message')
 def quickTest(**message):
     global counter
-    # data = message['data']
+    data = message['data']
     web = message['web_client']
 
-    counter += 1
     print(counter)
+    print(data)
     if counter == 2:
+        
         web.chat_postMessage(
             channel='the_finer_things',
-            text='UwU?'
+            text=(hewwwo(data['text']))
         )
         counter = 0
+    counter += 1
 
     
 
